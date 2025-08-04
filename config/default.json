@@ -1,0 +1,12 @@
+{
+  "window_title": "iPhone Mirroring",
+  "default_delay": 0.1,
+  "swipe_duration": 0.5,
+  "screenshot_confidence": 0.8,
+  "element_timeout": 10.0,
+  "failsafe": true,
+  "screenshot_dir": "./screenshots",
+  "log_actions": true,
+  "retry_attempts": 3,
+  "retry_delay": 1.0
+}
