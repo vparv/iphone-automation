@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liene Photo HD Automation Launcher</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        button {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            border: none;
+            border-radius: 10px;
+            padding: 15px 25px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+            min-width: 120px;
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .status {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .image-slot {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+        .image-slot.completed {
+            background: rgba(76, 175, 80, 0.8);
+        }
+        .image-slot.processing {
+            background: rgba(255, 193, 7, 0.8);
+            animation: pulse 1s infinite;
+        }
+        .image-slot.failed {
+            background: rgba(244, 67, 54, 0.8);
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .controls {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .input-group {
+            margin: 15px 0;
+        }
+        input, select {
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            margin: 0 10px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #4ECDC4, #44A08D);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Liene Photo HD Automation</h1>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>📸 Quick Actions</h3>
+                <button onclick="startFromImage(1)">Start from Image 1</button>
+                <button onclick="startFromImage(5)">Start from Image 5</button>
+                <button onclick="startFromImage(9)">Start from Image 9</button>
+                <button onclick="startFromImage(13)">Start from Image 13</button>
+            </div>
+            
+            <div class="card">
+                <h3>🎯 Custom Start</h3>
+                <div class="input-group">
+                    <label>Start from Image:</label>
+                    <input type="number" id="startImage" min="1" max="16" value="1">
+                    <label>Process:</label>
+                    <input type="number" id="numImages" min="1" max="16" value="4">
+                </div>
+                <button onclick="startCustom()">Start Custom</button>
+            </div>
+            
+            <div class="card">
+                <h3>⚙️ Controls</h3>
+                <button onclick="processAll16()">Process All 16</button>
+                <button onclick="testSingle()">Test Single Image</button>
+                <button onclick="resetState()">Reset to Image 1</button>
+                <button onclick="stopAutomation()" id="stopBtn" disabled>Stop</button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <div class="status" id="statusLog">
+            🚀 Ready to start automation...<br>
+            📍 Click any button above to begin processing images.<br>
+            💡 Tip: Start with "Test Single Image" to verify everything works.
+        </div>
+
+        <h3>📊 Image Processing Grid (1-16)</h3>
+        <div class="image-grid" id="imageGrid">
+            <!-- Grid will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        let currentProcess = null;
+        let processedImages = new Set();
+        
+        // Initialize image grid
+        function initGrid() {
+            const grid = document.getElementById('imageGrid');
+            for (let i = 1; i <= 16; i++) {
+                const slot = document.createElement('div');
+                slot.className = 'image-slot';
+                slot.id = `image-${i}`;
+                slot.textContent = i;
+                grid.appendChild(slot);
+            }
+        }
+        
+        // Update status log
+        function log(message) {
+            const statusLog = document.getElementById('statusLog');
+            const timestamp = new Date().toLocaleTimeString();
+            statusLog.innerHTML += `<br>[${timestamp}] ${message}`;
+            statusLog.scrollTop = statusLog.scrollHeight;
+        }
+        
+        // Update progress bar
+        function updateProgress(completed, total) {
+            const progressFill = document.getElementById('progressFill');
+            const percentage = (completed / total) * 100;
+            progressFill.style.width = `${percentage}%`;
+        }
+        
+        // Mark image status
+        function setImageStatus(imageNum, status) {
+            const slot = document.getElementById(`image-${imageNum}`);
+            slot.className = `image-slot ${status}`;
+            if (status === 'completed') {
+                processedImages.add(imageNum);
+            }
+        }
+        
+        // Generate Python command
+        function generatePythonCommand(startImage, numImages) {
+            return `python3 -c "
+from batch_processor import BatchProcessor
+import time
+
+processor = BatchProcessor()
+
+# Process images ${startImage} to ${startImage + numImages - 1}
+for i in range(${startImage}, ${startImage + numImages}):
+    print(f'🎯 Processing Image #{i}')
+    
+    # Calculate position
+    row = (i - 1) // 4
+    col = (i - 1) % 4
+    
+    # Set position
+    processor.navigator.save_state(row, col)
+    
+    # Navigate to gallery
+    processor.navigator.navigate_to_gallery()
+    time.sleep(1.5)
+    
+    # Select image
+    processor.navigator.select_next_image()
+    time.sleep(1.5)
+    
+    # Run workflow
+    result = processor.run_core_workflow()
+    if result:
+        print(f'✅ Image #{i} completed')
+    else:
+        print(f'❌ Image #{i} failed')
+    
+    time.sleep(2)
+
+print('🎉 Batch completed!')
+"`;
+        }
+        
+        // Start automation functions
+        function startFromImage(imageNum) {
+            log(`🚀 Starting automation from Image #${imageNum}`);
+            log(`📝 Command: Process 4 images starting from #${imageNum}`);
+            
+            const command = generatePythonCommand(imageNum, 4);
+            log(`🔧 Generated Python command - copy and run in terminal:`);
+            log(`<br><code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 3px;">${command}</code>`);
+            
+            // Simulate processing visualization
+            for (let i = imageNum; i < imageNum + 4 && i <= 16; i++) {
+                setTimeout(() => {
+                    setImageStatus(i, 'processing');
+                    setTimeout(() => {
+                        setImageStatus(i, 'completed');
+                        updateProgress(processedImages.size, 16);
+                    }, 2000);
+                }, (i - imageNum) * 1000);
+            }
+        }
+        
+        function startCustom() {
+            const startImage = parseInt(document.getElementById('startImage').value);
+            const numImages = parseInt(document.getElementById('numImages').value);
+            
+            log(`🎯 Custom automation: ${numImages} images starting from #${startImage}`);
+            
+            const command = generatePythonCommand(startImage, numImages);
+            log(`🔧 Generated Python command:`);
+            log(`<br><code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 3px;">${command}</code>`);
+        }
+        
+        function processAll16() {
+            log(`🌟 Starting full 16-image automation`);
+            
+            const command = `python3 robust_16_processor.py`;
+            log(`🔧 Command to run: <code>${command}</code>`);
+            log(`📖 This will process all images 1-16 with robust error handling`);
+        }
+        
+        function testSingle() {
+            log(`🧪 Testing single image automation`);
+            
+            const command = `python3 -c "
+from batch_processor import BatchProcessor
+processor = BatchProcessor()
+processor.navigator.reset_state()
+processor.navigator.navigate_to_gallery()
+processor.navigator.select_next_image()
+processor.run_core_workflow()
+"`;
+            log(`🔧 Test command:`);
+            log(`<br><code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 3px;">${command}</code>`);
+        }
+        
+        function resetState() {
+            log(`🔄 Resetting to Image #1`);
+            processedImages.clear();
+            
+            // Reset all image slots
+            for (let i = 1; i <= 16; i++) {
+                setImageStatus(i, '');
+            }
+            updateProgress(0, 16);
+            
+            const command = `python3 -c "
+from gallery_navigator import GalleryNavigator
+nav = GalleryNavigator()
+nav.reset_state()
+print('✅ Reset to Image #1')
+"`;
+            log(`🔧 Reset command:`);
+            log(`<br><code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 3px;">${command}</code>`);
+        }
+        
+        function stopAutomation() {
+            log(`⏹️ Stop automation (press Ctrl+C in terminal)`);
+        }
+        
+        // Initialize on load
+        window.onload = function() {
+            initGrid();
+            log(`🎉 Automation Launcher Ready!`);
+            log(`💡 Choose an option above to generate the appropriate Python command.`);
+        };
+    </script>
+</body>
+</html>
