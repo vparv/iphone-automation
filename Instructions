@@ -1,0 +1,6 @@
+To record:
+python3 record_lienne_app.py
+
+
+Working:
+- Delete photos from my project (loops a series of 17 actions, which deleted 5 images). 10 total loops. 50 images deleted.
