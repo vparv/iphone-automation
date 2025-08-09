@@ -148,6 +148,19 @@ class AutomationHandler(BaseHTTPRequestHandler):
             elif action == 'stop':
                 print("⏹️ Stopping automation")
                 # Set stop flag if needed
+            elif action == 'run_gallery_loop':
+                # Run android/gallery_loop.py starting at provided index, only 1 loop
+                start_img = int(params.get('start', 1))
+                # Enable optional end path by setting environment var for this subprocess
+                cmd = [
+                    sys.executable,
+                    os.path.join(os.path.dirname(__file__), 'android', 'gallery_loop.py'),
+                    str(start_img),
+                    '1',  # count=1
+                ]
+                print(f"📸 Running gallery_loop.py start={start_img} count=1 (optional ending TRUE)")
+                # Launch subprocess detached so server stays responsive
+                subprocess.Popen(cmd)
                 
         except Exception as e:
             print(f"❌ Automation error: {e}")

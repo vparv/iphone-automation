@@ -77,18 +77,30 @@ def main() -> None:
     y_values = [360, 620, 880, 1140, 1400]
     positions: List[Tuple[int, int]] = [(x, y) for y in y_values for x in x_values]
 
-    # Optional CLI: starting loop index (1-based). Example: python3 gallery_loop.py 2
+    # Optional CLI:
+    #   arg1: starting loop index (1-based). Example: python3 gallery_loop.py 2
+    #   arg2: count of loops to run. Example: python3 gallery_loop.py 5 1  (run only loop 5)
     start_index = 1
+    loop_count = None  # None means run until the end
     if len(sys.argv) >= 2:
         try:
             start_index = max(1, int(sys.argv[1]))
         except ValueError:
             start_index = 1
+    if len(sys.argv) >= 3:
+        try:
+            loop_count = max(1, int(sys.argv[2]))
+        except ValueError:
+            loop_count = None
 
     ensure_device()
 
-    print(f"Starting gallery run… (start={start_index}, total={len(positions)})")
-    pos_slice = positions[start_index - 1:]
+    print(f"Starting gallery run… (start={start_index}, total={len(positions)}, count={loop_count or 'all'})")
+    if loop_count is None:
+        pos_slice = positions[start_index - 1:]
+    else:
+        end_index = (start_index - 1) + loop_count
+        pos_slice = positions[start_index - 1:end_index]
     for idx, (gx, gy) in enumerate(pos_slice, start=start_index):
         print(f"\n=== Loop {idx}/{len(positions)} ===")
 
