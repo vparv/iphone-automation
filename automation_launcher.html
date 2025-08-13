@@ -135,6 +135,103 @@
             width: 0%;
             transition: width 0.3s ease;
         }
+        /* Floating eyeball toggle */
+        .eyeball-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 45%, #ffffff 0%, #e9f1ff 60%, #c8d8ff 100%);
+            border: 2px solid rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .eyeball-pupil {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle at 35% 35%, #2b2b2b 0%, #000 60%, #000 100%);
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 6px #3aa0ff, 0 2px 6px rgba(0,0,0,0.4);
+        }
+        /* Full-screen overlay */
+        .abg-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            display: none;
+            z-index: 1000; /* typically sits behind a motor UI if present */
+        }
+        .abg-overlay.active { display: block; }
+        .abg-overlay-inner {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+            color: #fff;
+        }
+        .abg-title { margin: 0 0 12px; font-size: 20px; font-weight: 700; }
+        .abg-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 12px;
+        }
+        .abg-card {
+            position: relative;
+            border-radius: 12px;
+            padding: 14px 14px 56px 14px;
+            background: rgba(0,0,0,0.35);
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+        .abg-card h4 { margin: 0 0 6px; font-size: 14px; opacity: 0.9; }
+        .abg-meta { font-size: 12px; opacity: 0.8; margin-bottom: 6px; }
+        .abg-address { font-size: 13px; line-height: 1.35; font-weight: 600; opacity: 0.95; }
+        .abg-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 11px;
+            margin-left: 6px;
+            background: rgba(46, 204, 113, 0.25);
+            border: 1px solid rgba(46, 204, 113, 0.6);
+        }
+        .abg-badge.blocked { background: rgba(231, 76, 60, 0.25); border-color: rgba(231, 76, 60, 0.6); }
+        .abg-thumb {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            width: 64px;
+            height: 64px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+        /* Grid item: person image prioritized in bottom corner */
+        .image-slot { position: relative; overflow: hidden; }
+        .person-thumb {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            width: 64px;
+            height: 64px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+            border: 1px solid rgba(255,255,255,0.25);
+            z-index: 1;
+        }
+        .slot-label { position: absolute; top: 6px; left: 8px; font-size: 11px; opacity: 0.8; }
+        .no-scroll { overflow: hidden; }
     </style>
 </head>
 <body>
@@ -186,9 +283,33 @@
         </div>
     </div>
 
+    <!-- Active Batch Gallery overlay -->
+    <div id="galleryOverlay" class="abg-overlay" aria-hidden="true">
+        <div class="abg-overlay-inner" role="dialog" aria-modal="true" aria-labelledby="abgTitle">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                <h3 id="abgTitle" class="abg-title">Active Batch Gallery</h3>
+                <button onclick="toggleOverlay(false)" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.35);border-radius:8px;padding:6px 10px;color:#fff;cursor:pointer;">Close</button>
+            </div>
+            <div style="font-size:12px;opacity:0.85;margin-bottom:10px;">Background is dimmed with slight transparency. This view prioritizes the person's square image and the validated shipping address. Only order number and block status are shown; other details are hidden.</div>
+            <div id="abgList" class="abg-list"></div>
+        </div>
+    </div>
+
+    <!-- Floating eyeball toggle -->
+    <div class="eyeball-btn" id="eyeballBtn" title="Toggle Active Batch Gallery" onclick="toggleOverlay()">
+        <div class="eyeball-pupil"></div>
+    </div>
+
     <script>
         let currentProcess = null;
         let processedImages = new Set();
+        // Mock gallery data with emphasis on validated shipping address
+        const galleryData = Array.from({ length: 16 }).map((_, idx) => ({
+            id: idx + 1,
+            orderNumber: `ORD-${String(idx + 1).padStart(4, '0')}`,
+            shippingAddress: `Validated: ${100 + idx} Market St, Suite ${10 + idx}, Springfield, USA`,
+            isBlocked: (idx % 7 === 0) // arbitrary sample blocks
+        }));
         
         // Initialize image grid
         function initGrid() {
@@ -197,7 +318,15 @@
                 const slot = document.createElement('div');
                 slot.className = 'image-slot';
                 slot.id = `image-${i}`;
-                slot.textContent = i;
+                const label = document.createElement('div');
+                label.className = 'slot-label';
+                label.textContent = `#${i}`;
+                const img = document.createElement('img');
+                img.className = 'person-thumb';
+                img.alt = `Person ${i}`;
+                img.src = 'images/1-home.png'; // placeholder; person image prioritized over any sticker sheet
+                slot.appendChild(label);
+                slot.appendChild(img);
                 grid.appendChild(slot);
             }
         }
@@ -343,6 +472,50 @@ print('✅ Reset to Image #1')
         
         function stopAutomation() {
             log(`⏹️ Stop automation (press Ctrl+C in terminal)`);
+        }
+
+        // Build overlay cards focusing on shipping address, order number, and block status
+        function buildOverlay() {
+            const list = document.getElementById('abgList');
+            list.innerHTML = '';
+            galleryData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'abg-card';
+                const title = document.createElement('h4');
+                title.textContent = `Order ${item.orderNumber}`;
+                const badge = document.createElement('span');
+                badge.className = 'abg-badge' + (item.isBlocked ? ' blocked' : '');
+                badge.textContent = item.isBlocked ? 'Blocked' : 'OK';
+                title.appendChild(badge);
+
+                const address = document.createElement('div');
+                address.className = 'abg-address';
+                address.textContent = item.shippingAddress; // Validated shipping address emphasized
+
+                const thumb = document.createElement('img');
+                thumb.className = 'abg-thumb';
+                thumb.src = 'images/1-home.png'; // placeholder person square image
+                thumb.alt = `Person ${item.id}`;
+
+                card.appendChild(title);
+                card.appendChild(address);
+                card.appendChild(thumb);
+                list.appendChild(card);
+            });
+        }
+
+        // Toggle overlay visibility
+        function toggleOverlay(force) {
+            const overlay = document.getElementById('galleryOverlay');
+            const shouldOpen = force !== undefined ? force : !overlay.classList.contains('active');
+            if (shouldOpen) {
+                buildOverlay();
+                overlay.classList.add('active');
+                document.body.classList.add('no-scroll');
+            } else {
+                overlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
         }
         
         // Initialize on load

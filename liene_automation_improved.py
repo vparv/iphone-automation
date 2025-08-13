@@ -25,7 +25,7 @@ class ImprovedLienePhotoAutomation:
         self.coordinates = {
             'canvas_button': (530, 114),      # Canvas button (+ Canvas)
             'upload_button': (30, 195),       # Upload button in sidebar
-            'use_it_button': (520, 647),      # "Use it" button
+            'use_it_button': (525, 710),      # "Use it" button
             'next_button': (232, 636),        # "Next" button  
             'size_input': (1000, 447),        # Size input area
             'confirm_button_1': (1000, 120),  # First confirmation
@@ -112,12 +112,8 @@ class ImprovedLienePhotoAutomation:
             self.execute_workflow_step("Step 4", "use_it_button",
                                      self.timing['processing_wait'], "Use it button")
             
-            # STEP 5: Click "Next" button
-            self.execute_workflow_step("Step 5", "next_button",
-                                     self.timing['navigation_wait'], "Next button")
-            
-            # STEP 6: Handle sizing and confirmations
-            print("Step 6: Handling size input and confirmations...")
+            # STEP 5: Handle sizing and confirmations
+            print("Step 5: Handling size input and confirmations...")
             
             # Click size input area
             self.click_with_verification(self.coordinates['size_input'][0], 
@@ -133,11 +129,11 @@ class ImprovedLienePhotoAutomation:
             time.sleep(1.0)
             
             # Confirmation clicks
-            self.execute_workflow_step("Step 6a", "confirm_button_1", 0.5, "First confirmation")
-            self.execute_workflow_step("Step 6b", "confirm_button_2", 1.0, "Second confirmation")
+            self.execute_workflow_step("Step 5a", "confirm_button_1", 0.5, "First confirmation")
+            self.execute_workflow_step("Step 5b", "confirm_button_2", 1.0, "Second confirmation")
             
-            # STEP 7: Navigate back to start
-            self.execute_workflow_step("Step 7", "back_button",
+            # STEP 6: Navigate back to start
+            self.execute_workflow_step("Step 6", "back_button",
                                      self.timing['navigation_wait'], "Back to main")
             
             print(f"✅ Image {image_number} completed successfully!")

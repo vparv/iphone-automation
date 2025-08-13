@@ -70,8 +70,7 @@ def main() -> None:
     # Config
     default_pause = 0.75
     between_loops_pause = 2.0  # extra stabilization time before next loop starts
-    # Toggle this to insert extra taps after drags and end the loop early
-    optional_post_drag_enabled = True
+    # No optional ending in this variant
     # Use explicit gallery coordinates provided (4 columns x 5 rows = 20 positions)
     x_values = [170, 400, 630, 940]
     y_values = [360, 620, 880, 1140, 1400]
@@ -130,34 +129,12 @@ def main() -> None:
         drag(480, 960, 260, 360, duration_ms=500)
         time.sleep(default_pause)
 
-        # Optional post-drag sequence; if enabled, this ends the loop early
-        if optional_post_drag_enabled:
-            print("Optional post-drag: tap 920,200")
-            tap(920, 200)
-            time.sleep(3.0)
-            print("Optional post-drag: tap 680,220")
-            tap(680, 220)
-            time.sleep(3.0)
-            print("Optional post-drag: tap 800,2150")
-            tap(800, 2150)
-            # End of loop per request with special handling for first loop
-            if idx == 1:
-                time.sleep(20.0)
-                continue
-            else:
-                # Pre-final-click settle
-                time.sleep(2.0)
-                print("Optional post-drag final: tap 550,1400")
-                tap(550, 1400)
-                # Ensure 2s between loops
-                time.sleep(2.0)
-                continue
-
-        # Final taps
+        # Post-drag save tap
+        time.sleep(1.0)
         tap(70, 190)
-        time.sleep(default_pause)
-        tap(630, 1780)
-        time.sleep(default_pause)
+        time.sleep(4.0)
+        tap(550, 1750)
+        time.sleep(2.0)
 
         # Inter-loop stabilization pause
         time.sleep(between_loops_pause)
@@ -167,5 +144,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
 
 

@@ -1,6 +1,9 @@
 To record:
 python3 record_lienne_app.py
-
+python3 coordinate_tracker.py
 
 Working:
 - Delete photos from my project (loops a series of 17 actions, which deleted 5 images). 10 total loops. 50 images deleted.
+python3 recordings/liene_delete_project_photos.py
+- Upload 20 images and save: python3 recordings/liene_session_20250808_205800_loop20.py
+- 
