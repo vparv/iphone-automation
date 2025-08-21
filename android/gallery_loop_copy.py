@@ -81,7 +81,7 @@ def main() -> None:
     #   arg1: starting loop index (1-based). Example: python3 gallery_loop.py 2
     #   arg2: count of loops to run. Example: python3 gallery_loop.py 5 1  (run only loop 5)
     start_index = 1
-    loop_count = None  # None means run until the end
+    loop_count = 25  # Set to 25 loops
     if len(sys.argv) >= 2:
         try:
             start_index = max(1, int(sys.argv[1]))
@@ -127,7 +127,7 @@ def main() -> None:
         drag(600, 1350, 775, 2010, duration_ms=500)
         time.sleep(0.25)
         print("Drag 2…")
-        drag(480, 960, 260, 360, duration_ms=500)
+        drag(480, 960, 230, 390, duration_ms=500)
         time.sleep(default_pause)
 
         # Optional post-drag sequence; if enabled, this ends the loop early
@@ -167,5 +167,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-
