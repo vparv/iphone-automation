@@ -1,0 +1,113 @@
+{
+  "timestamp": "2025-08-08T20:54:07.109115",
+  "window_bounds": {
+    "x": 2284,
+    "y": 80,
+    "width": 1051,
+    "height": 816
+  },
+  "total_actions": 17,
+  "actions": [
+    {
+      "type": "click",
+      "x": 362.984375,
+      "y": 44.0,
+      "button": "left",
+      "timestamp": 3.347499132156372
+    },
+    {
+      "type": "click",
+      "x": 527.984375,
+      "y": 120.0,
+      "button": "left",
+      "timestamp": 5.760738134384155
+    },
+    {
+      "type": "click",
+      "x": 39.984375,
+      "y": 206.0,
+      "button": "left",
+      "timestamp": 7.653443098068237
+    },
+    {
+      "type": "click",
+      "x": 417.984375,
+      "y": 182.0,
+      "button": "left",
+      "timestamp": 10.314316034317017
+    },
+    {
+      "type": "click",
+      "x": 528.984375,
+      "y": 648.0,
+      "button": "left",
+      "timestamp": 13.095280885696411
+    },
+    {
+      "type": "click",
+      "x": 526.984375,
+      "y": 711.0,
+      "button": "left",
+      "timestamp": 23.90123224258423
+    },
+    {
+      "type": "click",
+      "x": 972.984375,
+      "y": 446.0,
+      "button": "left",
+      "timestamp": 26.560165882110596
+    },
+    {
+      "type": "key",
+      "key": "backspace",
+      "timestamp": 27.73438596725464
+    },
+    {
+      "type": "key",
+      "key": "backspace",
+      "timestamp": 27.873518228530884
+    },
+    {
+      "type": "key",
+      "key": "1",
+      "timestamp": 28.314770936965942
+    },
+    {
+      "type": "key",
+      "key": "6",
+      "timestamp": 28.689718008041382
+    },
+    {
+      "type": "key",
+      "key": "6",
+      "timestamp": 28.840065002441406
+    },
+    {
+      "type": "click",
+      "x": 1023.984375,
+      "y": 448.0,
+      "button": "left",
+      "timestamp": 32.20145630836487
+    },
+    {
+      "type": "key",
+      "key": "cmd",
+      "timestamp": 33.56810116767883
+    },
+    {
+      "type": "key",
+      "key": "z",
+      "timestamp": 33.65466809272766
+    },
+    {
+      "type": "key",
+      "key": "shift",
+      "timestamp": 35.128926038742065
+    },
+    {
+      "type": "key",
+      "key": "c",
+      "timestamp": 35.62433624267578
+    }
+  ]
+}

@@ -41,8 +41,7 @@ venv.bak/
 .LSOverride
 
 # Personal recordings (optional - remove this line if you want to share recordings)
-recordings/*.json
-recordings/*.py
+
 
 # Logs
 *.log

@@ -1,0 +1,129 @@
+{
+  "timestamp": "2025-08-08T20:37:42.889608",
+  "window_bounds": {
+    "x": 2284,
+    "y": 80,
+    "width": 1051,
+    "height": 816
+  },
+  "total_actions": 17,
+  "actions": [
+    {
+      "type": "click",
+      "x": 327.0,
+      "y": 37.0,
+      "button": "left",
+      "timestamp": 3.777009963989258
+    },
+    {
+      "type": "click",
+      "x": 158.0,
+      "y": 169.0,
+      "button": "left",
+      "timestamp": 6.900032997131348
+    },
+    {
+      "type": "click",
+      "x": 464.0,
+      "y": 507.0,
+      "button": "left",
+      "timestamp": 8.963979005813599
+    },
+    {
+      "type": "click",
+      "x": 588.0,
+      "y": 469.0,
+      "button": "left",
+      "timestamp": 10.443422079086304
+    },
+    {
+      "type": "click",
+      "x": 156.0,
+      "y": 171.0,
+      "button": "left",
+      "timestamp": 13.32559585571289
+    },
+    {
+      "type": "click",
+      "x": 452.0,
+      "y": 507.0,
+      "button": "left",
+      "timestamp": 14.854537010192871
+    },
+    {
+      "type": "click",
+      "x": 571.0,
+      "y": 468.0,
+      "button": "left",
+      "timestamp": 15.728535175323486
+    },
+    {
+      "type": "click",
+      "x": 157.0,
+      "y": 171.0,
+      "button": "left",
+      "timestamp": 18.232344150543213
+    },
+    {
+      "type": "click",
+      "x": 457.0,
+      "y": 506.0,
+      "button": "left",
+      "timestamp": 19.432064056396484
+    },
+    {
+      "type": "click",
+      "x": 620.0,
+      "y": 469.0,
+      "button": "left",
+      "timestamp": 20.039139986038208
+    },
+    {
+      "type": "click",
+      "x": 155.0,
+      "y": 169.0,
+      "button": "left",
+      "timestamp": 23.09650683403015
+    },
+    {
+      "type": "click",
+      "x": 462.0,
+      "y": 502.0,
+      "button": "left",
+      "timestamp": 24.278905868530273
+    },
+    {
+      "type": "click",
+      "x": 608.0,
+      "y": 476.0,
+      "button": "left",
+      "timestamp": 24.969456911087036
+    },
+    {
+      "type": "click",
+      "x": 157.0,
+      "y": 169.0,
+      "button": "left",
+      "timestamp": 27.959858894348145
+    },
+    {
+      "type": "click",
+      "x": 463.0,
+      "y": 506.0,
+      "button": "left",
+      "timestamp": 29.105163097381592
+    },
+    {
+      "type": "click",
+      "x": 569.0,
+      "y": 475.0,
+      "button": "left",
+      "timestamp": 30.091681003570557
+    },
+    {
+      "type": "key",
+      "key": "c",
+      "timestamp": 33.74012899398804
+    }
+  ]
+}
