@@ -1,0 +1,421 @@
+{
+  "timestamp": "2025-08-08T21:16:10.039331",
+  "window_bounds": {
+    "x": 2284,
+    "y": 80,
+    "width": 1051,
+    "height": 816
+  },
+  "total_actions": 67,
+  "actions": [
+    {
+      "type": "click",
+      "x": 538.0,
+      "y": 702.0,
+      "button": "left",
+      "timestamp": 2.316423177719116
+    },
+    {
+      "type": "click",
+      "x": 567.0,
+      "y": 696.0,
+      "button": "left",
+      "timestamp": 4.839454412460327
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 570.0,
+      "y": 297.0,
+      "direction": "up",
+      "duration": 0.16,
+      "speed": 3,
+      "timestamp": 11.18497920036316
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 573.0,
+      "y": 355.0,
+      "direction": "down",
+      "duration": 0.2,
+      "speed": 2,
+      "timestamp": 13.000583171844482
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 580.0,
+      "y": 338.0,
+      "direction": "up",
+      "duration": 1.0,
+      "speed": 3,
+      "timestamp": 16.82290816307068
+    },
+    {
+      "type": "key",
+      "key": "alt",
+      "timestamp": 26.527523279190063
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 538.30078125,
+      "y": 326.59765625,
+      "direction": "up",
+      "duration": 1.0,
+      "speed": 3,
+      "timestamp": 23.725317239761353
+    },
+    {
+      "type": "key",
+      "key": "cmd",
+      "timestamp": 27.55777406692505
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 525.0,
+      "y": 422.0,
+      "direction": "down",
+      "duration": 0.2,
+      "speed": 1,
+      "timestamp": 26.708611249923706
+    },
+    {
+      "type": "key",
+      "key": "shift",
+      "timestamp": 28.31249713897705
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 525.0,
+      "y": 430.0,
+      "direction": "up",
+      "duration": 0.2,
+      "speed": 3,
+      "timestamp": 27.687455415725708
+    },
+    {
+      "type": "key",
+      "key": "alt",
+      "timestamp": 30.056236028671265
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 523.0,
+      "y": 469.0,
+      "direction": "right",
+      "duration": 0.2,
+      "speed": 3,
+      "timestamp": 28.87436819076538
+    },
+    {
+      "type": "click",
+      "x": 981.0,
+      "y": 360.0,
+      "button": "left",
+      "timestamp": 32.504775285720825
+    },
+    {
+      "type": "click",
+      "x": 396.0,
+      "y": 126.0,
+      "button": "left",
+      "timestamp": 33.418485164642334
+    },
+    {
+      "type": "click",
+      "x": 557.0,
+      "y": 488.0,
+      "button": "left",
+      "timestamp": 58.45489835739136
+    },
+    {
+      "type": "click",
+      "x": 25.0,
+      "y": 213.0,
+      "button": "left",
+      "timestamp": 59.455472230911255
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 60.706682205200195
+    },
+    {
+      "type": "key",
+      "key": "up",
+      "timestamp": 61.62967133522034
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 63.31082534790039
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 64.17167520523071
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 64.54693722724915
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 64.74546027183533
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 64.88787317276001
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 65.0343611240387
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 65.16826128959656
+    },
+    {
+      "type": "key",
+      "key": "up",
+      "timestamp": 67.56386208534241
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 70.48090124130249
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 71.1009840965271
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 71.2429711818695
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 71.38844323158264
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 71.53445625305176
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 71.69396829605103
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 71.83955931663513
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 72.00053930282593
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 72.15932726860046
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 72.3096513748169
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 72.46576619148254
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 72.63942122459412
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 72.7598283290863
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 72.90829014778137
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 73.08780121803284
+    },
+    {
+      "type": "key",
+      "key": "up",
+      "timestamp": 75.60175824165344
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 78.91692328453064
+    },
+    {
+      "type": "click",
+      "x": 398.0,
+      "y": 128.0,
+      "button": "left",
+      "timestamp": 81.36265230178833
+    },
+    {
+      "type": "click",
+      "x": 23.0,
+      "y": 206.0,
+      "button": "left",
+      "timestamp": 82.23506212234497
+    },
+    {
+      "type": "key",
+      "key": "up",
+      "timestamp": 86.59451913833618
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 91.64178323745728
+    },
+    {
+      "type": "key",
+      "key": "shift_r",
+      "timestamp": 96.48022031784058
+    },
+    {
+      "type": "key",
+      "key": "up",
+      "timestamp": 98.2044951915741
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 100.16837620735168
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "timestamp": 101.87845230102539
+    },
+    {
+      "type": "key",
+      "key": "alt",
+      "timestamp": 104.84762716293335
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 525.0,
+      "y": 422.0,
+      "direction": "up",
+      "duration": 0.2,
+      "speed": 3,
+      "timestamp": 30.333608388900757
+    },
+    {
+      "type": "key",
+      "key": "alt",
+      "timestamp": 107.73596906661987
+    },
+    {
+      "type": "click",
+      "x": 525.0,
+      "y": 422.0,
+      "button": "left",
+      "timestamp": 108.14776921272278
+    },
+    {
+      "type": "click",
+      "x": 555.0,
+      "y": 492.0,
+      "button": "left",
+      "timestamp": 109.40076637268066
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 525.0,
+      "y": 422.0,
+      "direction": "down",
+      "duration": 0.2,
+      "speed": 3,
+      "timestamp": 106.38167428970337
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 539.0,
+      "y": 569.0,
+      "direction": "up",
+      "duration": 0.2,
+      "speed": 3,
+      "timestamp": 111.81542611122131
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 523.0,
+      "y": 579.0,
+      "direction": "up",
+      "duration": 1.0,
+      "speed": 3,
+      "timestamp": 113.61304497718811
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 523.0,
+      "y": 579.0,
+      "direction": "down",
+      "duration": 0.85,
+      "speed": 3,
+      "timestamp": 117.34359240531921
+    },
+    {
+      "type": "key",
+      "key": "alt",
+      "timestamp": 121.05971121788025
+    },
+    {
+      "type": "key",
+      "key": "alt",
+      "timestamp": 129.68312621116638
+    },
+    {
+      "type": "key",
+      "key": "alt",
+      "timestamp": 134.1412491798401
+    },
+    {
+      "type": "click",
+      "x": 399.42578125,
+      "y": 131.48046875,
+      "button": "left",
+      "timestamp": 138.76140904426575
+    },
+    {
+      "type": "key",
+      "key": "c",
+      "timestamp": 142.35896706581116
+    },
+    {
+      "type": "continuous_scroll",
+      "x": 523.0,
+      "y": 579.0,
+      "direction": "up",
+      "duration": 1.0,
+      "speed": 3,
+      "timestamp": 118.87716627120972
+    }
+  ]
+}

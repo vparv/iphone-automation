@@ -1,0 +1,80 @@
+{
+  "timestamp": "2025-08-10T01:41:48.247507",
+  "window_bounds": {
+    "x": 2067,
+    "y": 25,
+    "width": 1051,
+    "height": 816
+  },
+  "total_actions": 10,
+  "actions": [
+    {
+      "type": "click",
+      "x": 1000.0,
+      "y": 191.0,
+      "button": "left",
+      "timestamp": 0.7869529724121094
+    },
+    {
+      "type": "click",
+      "x": 1002.0,
+      "y": 181.0,
+      "button": "left",
+      "timestamp": 1.4681921005249023
+    },
+    {
+      "type": "click",
+      "x": 21.0,
+      "y": 46.0,
+      "button": "left",
+      "timestamp": 4.946200132369995
+    },
+    {
+      "type": "click",
+      "x": 184.0,
+      "y": 5.0,
+      "button": "left",
+      "timestamp": 6.008074998855591
+    },
+    {
+      "type": "click",
+      "x": 366.0,
+      "y": 531.0,
+      "button": "left",
+      "timestamp": 9.096303224563599
+    },
+    {
+      "type": "click",
+      "x": 271.0,
+      "y": 286.0,
+      "button": "left",
+      "timestamp": 11.30803108215332
+    },
+    {
+      "type": "click",
+      "x": 271.0,
+      "y": 286.0,
+      "button": "left",
+      "timestamp": 11.825439929962158
+    },
+    {
+      "type": "click",
+      "x": 177.0,
+      "y": 103.0,
+      "button": "left",
+      "timestamp": 13.307653188705444
+    },
+    {
+      "type": "click",
+      "x": 198.0,
+      "y": 75.0,
+      "button": "left",
+      "timestamp": 13.899748086929321
+    },
+    {
+      "type": "key",
+      "key": "c",
+      "timestamp": 15.062434196472168
+    }
+  ]
+}

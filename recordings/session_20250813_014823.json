@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-08-13T01:48:23.057476",
+  "window_bounds": {
+    "x": 2495,
+    "y": 112,
+    "width": 440,
+    "height": 970
+  },
+  "total_actions": 5,
+  "actions": [
+    {
+      "type": "click",
+      "x": 206.0,
+      "y": 211.0,
+      "button": "left",
+      "timestamp": 2.390376329421997
+    },
+    {
+      "type": "click",
+      "x": 226.0,
+      "y": 220.0,
+      "button": "left",
+      "timestamp": 3.3280539512634277
+    },
+    {
+      "type": "click",
+      "x": 217.0,
+      "y": 876.0,
+      "button": "left",
+      "timestamp": 5.504541873931885
+    },
+    {
+      "type": "click",
+      "x": 30.0,
+      "y": 112.0,
+      "button": "left",
+      "timestamp": 11.74009394645691
+    },
+    {
+      "type": "key",
+      "key": "c",
+      "timestamp": 13.616199254989624
+    }
+  ]
+}

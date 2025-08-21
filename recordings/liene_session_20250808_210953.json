@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-08-08T21:09:53.498040",
+  "window_bounds": {
+    "x": 2284,
+    "y": 80,
+    "width": 1051,
+    "height": 816
+  },
+  "total_actions": 7,
+  "actions": [
+    {
+      "type": "click",
+      "x": 414.0,
+      "y": 253.0,
+      "button": "left",
+      "timestamp": 4.873304128646851
+    },
+    {
+      "type": "click",
+      "x": 487.0,
+      "y": 255.0,
+      "button": "left",
+      "timestamp": 9.163608074188232
+    },
+    {
+      "type": "key",
+      "key": "cmd",
+      "timestamp": 12.831385135650635
+    },
+    {
+      "type": "key",
+      "key": "c",
+      "timestamp": 12.998930931091309
+    },
+    {
+      "type": "key",
+      "key": "c",
+      "timestamp": 13.567068099975586
+    },
+    {
+      "type": "key",
+      "key": "c",
+      "timestamp": 13.790528059005737
+    },
+    {
+      "type": "key",
+      "key": "c",
+      "timestamp": 15.021007061004639
+    }
+  ]
+}
